@@ -1,0 +1,66 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>OpenBlue | Enterprise Manager</span>
+  <span class="spacer"></span>
+  
+  <button mat-icon-button>
+    <mat-icon>home</mat-icon>
+  </button>
+  
+  <button mat-icon-button>
+    <mat-icon>lightbulb</mat-icon>
+  </button>
+  
+  <button mat-icon-button>
+    <mat-icon>apps</mat-icon>
+  </button>
+  
+  <button mat-icon-button>
+    <mat-icon>notifications</mat-icon>
+  </button>
+  
+  <button mat-icon-button>
+    <mat-icon>help</mat-icon>
+  </button>
+  
+  <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+    <div class="user-avatar">BL</div>
+    <span>User</span>
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item>Profile</button>
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Logout</button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="location-bar">
+  <div class="breadcrumb">
+    <span>JCI Corporate /</span>
+  </div>
+  
+  <div class="location-selector">
+    {{ location }}
+    <mat-icon>arrow_drop_down</mat-icon>
+  </div>
+  
+  <div class="weather-info">
+    <ng-container *ngFor="let weather of weatherData">
+      <div class="weather-item">
+        <div class="weather-icon" *ngIf="weather.day === 'Yesterday'">
+          <mat-icon>wb_cloudy</mat-icon>
+        </div>
+        <div class="weather-icon" *ngIf="weather.day === 'Today'">
+          <mat-icon>wb_sunny</mat-icon>
+        </div>
+        <div class="weather-text">
+          <div>{{ weather.day }}</div>
+          <div>{{ weather.highTemp }} {{ weather.lowTemp }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

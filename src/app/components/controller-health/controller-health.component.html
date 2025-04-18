@@ -1,0 +1,43 @@
+<mat-card class="controller-card" *ngIf="controllerHealth">
+  <div class="card-header">
+    <div>
+      <h2>{{ controllerHealth.controllerName }} Controller Health</h2>
+      <p>{{ controllerHealth.platform }}</p>
+    </div>
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="card-content">
+    <div class="data-summary">
+      <div class="data-item">
+        <div class="label">Data Received</div>
+        <div class="value">{{ controllerHealth.dataReceived }}</div>
+      </div>
+      <div class="data-item">
+        <div class="label">Data Expected</div>
+        <div class="value">{{ controllerHealth.dataExpected }}</div>
+      </div>
+    </div>
+
+    <div class="points-table">
+      <div class="table-header">
+        <div class="point-name">Point Name</div>
+        <div class="last-sample">Last Sample</div>
+      </div>
+      <div class="table-row" *ngFor="let point of controllerHealth.points">
+        <div class="point-name">{{ point.pointName }}</div>
+        <div class="last-sample">{{ point.lastSample }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button mat-button class="download-btn" (click)="downloadData()">
+      <mat-icon>download</mat-icon>
+      Download
+    </button>
+    <button mat-button class="close-btn" (click)="closeDialog()">Close</button>
+  </div>
+</mat-card>

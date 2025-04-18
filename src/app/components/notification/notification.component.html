@@ -1,0 +1,11 @@
+<div class="notification success-toast" *ngIf="visible">
+  <div class="notification-icon">
+    <mat-icon>check_circle</mat-icon>
+  </div>
+  <div class="notification-content">
+    {{ message }}
+  </div>
+  <button class="dismiss-btn" mat-icon-button (click)="dismiss()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

@@ -1,59 +1,106 @@
-# JohansancontrolDashboard
+# JohanSan Control Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+A modern Angular UI dashboard for building controllers management. This project provides a clean interface for monitoring controller requests and health with features like filtering, notifications, and request management.
 
-## Development server
+![Dashboard Screenshot](src/assets/dashboard-screenshot.png)
 
-To start a local development server, run:
+## Features
+
+- Controller requests management
+- Filter and sort controller data
+- Add new controller requests
+- View controller health metrics
+- Real-time notifications
+- Responsive design
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16.x or later)
+- [npm](https://www.npmjs.com/) (v8.x or later)
+
+## Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/johansancontrol-dashboard.git
+   cd johansancontrol-dashboard
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+   
+   > **Note:** The `--legacy-peer-deps` flag is needed to resolve Angular Material dependencies.
+
+## Running the Application
+
+1. Start the development server:
+   ```bash
+   ng serve
+   ```
+
+2. Open your browser and navigate to:
+   ```
+   http://localhost:4200/
+   ```
+
+## Building for Production
+
+To build the application for production:
 
 ```bash
-ng serve
+ng build --configuration production
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The build artifacts will be stored in the `dist/johansancontrol-dashboard/browser` directory.
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+johansancontrol-dashboard/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── header/
+│   │   │   ├── dashboard/
+│   │   │   ├── controller-requests/
+│   │   │   ├── controller-health/
+│   │   │   ├── add-request-modal/
+│   │   │   └── notification/
+│   │   ├── models/
+│   │   │   └── controller.model.ts
+│   │   ├── services/
+│   │   │   └── controller.service.ts
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.scss
+│   │   └── app.routes.ts
+│   ├── assets/
+│   ├── styles.scss
+│   └── index.html
+├── angular.json
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Connecting to Backend
 
-```bash
-ng generate --help
-```
+This project includes a mock service for demonstration. To connect to a real backend:
 
-## Building
+1. Update the `controller.service.ts` file to make actual HTTP requests
+2. Configure the API endpoints in an environment file
+3. Implement proper error handling and loading states
 
-To build the project run:
+## Additional Commands
 
-```bash
-ng build
-```
+- Run unit tests: `ng test`
+- Run linting: `ng lint`
+- Generate new component: `ng generate component component-name`
+- Generate new service: `ng generate service service-name`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## License
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[MIT License](LICENSE)

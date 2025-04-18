@@ -1,1 +1,173 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { 
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --primary-color: #0046ad;
+  --primary-dark: #003380;
+  --primary-light: #3373c4;
+  --accent-color: #f8f9fa;
+  --text-color: #333;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --gray-light: #f8f9fa;
+  --gray-medium: #e9ecef;
+  --gray-dark: #6c757d;
+}
+
+.mat-mdc-card {
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+.success-toast {
+  background-color: #dff6dd;
+  color: #1e8e3e;
+  border-left: 4px solid #1e8e3e;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.status-processing {
+  color: var(--warning-color);
+}
+
+.status-completed {
+  color: var(--success-color);
+}
+
+.container {
+  padding: 15px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--gray-dark);
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+.view-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.filter-button mat-icon {
+  margin-left: 4px;
+}
+
+.add-request-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.add-request-btn mat-icon {
+  font-size: 18px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid var(--gray-medium);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--gray-dark);
+  border: 1px solid var(--gray-medium);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}

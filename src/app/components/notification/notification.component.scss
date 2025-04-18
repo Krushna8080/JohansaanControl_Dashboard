@@ -1,0 +1,21 @@
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.notification-icon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.dismiss-btn {
+  margin-left: 8px;
+}

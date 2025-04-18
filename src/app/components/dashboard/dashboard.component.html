@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+  <app-header></app-header>
+  
+  <div class="page-content">
+    <div class="tabs-container">
+      <mat-tab-group>
+        <mat-tab label="Connectivity">
+          <div class="tab-content">
+            <!-- Connectivity tab content would go here -->
+          </div>
+        </mat-tab>
+        <mat-tab label="Anomaly Details">
+          <div class="tab-content">
+            <!-- Anomaly Details tab content would go here -->
+          </div>
+        </mat-tab>
+        <mat-tab label="Troubleshoot Controller Health" class="active-tab">
+          <div class="tab-content">
+            <app-controller-requests></app-controller-requests>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  
+  <div class="notification-container" *ngIf="showNotification">
+    <app-notification [message]="notificationMessage"></app-notification>
+  </div>
+</div>

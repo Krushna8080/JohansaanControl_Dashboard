@@ -1,7 +1,4 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { config } from './app/app.config.server';
-
-const bootstrap = () => bootstrapApplication(AppComponent, config);
-
+// This is a placeholder for server-side rendering
+// We're only using client-side rendering for this project
+const bootstrap = () => {};
 export default bootstrap;

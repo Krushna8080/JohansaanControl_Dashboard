@@ -1,0 +1,36 @@
+.controller-requests-container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.status-processing {
+  color: var(--warning-color);
+}
+
+.status-completed {
+  color: var(--success-color);
+}
+
+th mat-icon {
+  font-size: 16px;
+  vertical-align: middle;
+  opacity: 0.6;
+}

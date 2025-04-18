@@ -1,0 +1,61 @@
+<div class="controller-requests-container">
+  <div class="header">
+    <h1>Controller Requests</h1>
+    <button class="add-request-btn" (click)="openAddRequestModal()">
+      <mat-icon>add</mat-icon>
+      Add a Request
+    </button>
+  </div>
+  
+  <div class="filters">
+    <button class="filter-button">
+      Status
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    
+    <button class="filter-button">
+      Request Date
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    
+    <button class="filter-button">
+      Requestor
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    
+    <button class="filter-button">
+      Completed Date
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+  </div>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Controller Name <mat-icon>arrow_downward</mat-icon></th>
+          <th>Install Location <mat-icon>arrow_downward</mat-icon></th>
+          <th>Request Date & Time <mat-icon>arrow_downward</mat-icon></th>
+          <th>Requestor <mat-icon>arrow_downward</mat-icon></th>
+          <th>Status</th>
+          <th>Completed Date & Time</th>
+          <th>Results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of controllerRequests">
+          <td>{{ request.controllerName }}</td>
+          <td>{{ request.installLocation }}</td>
+          <td>{{ request.requestDate }}</td>
+          <td>{{ request.requestor }}</td>
+          <td [ngClass]="{'status-processing': request.status === 'Processing', 'status-completed': request.status === 'Completed'}">{{ request.status }}</td>
+          <td>{{ request.completedDate || '-' }}</td>
+          <td>
+            <a *ngIf="request.status === 'Completed'" [routerLink]="['/controller', request.id]" class="view-link">View</a>
+            <span *ngIf="request.status !== 'Completed'">-</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
