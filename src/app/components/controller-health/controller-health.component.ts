@@ -45,8 +45,29 @@ export class ControllerHealthComponent implements OnInit {
   }
 
   downloadData(): void {
-    // This would typically trigger a file download
-    console.log('Downloading data...');
+    if (!this.controllerHealth) return;
+    
+    // Create CSV content
+    const headers = ['Point Name', 'Last Sample'];
+    const csvRows = [headers];
+    
+    this.controllerHealth.points.forEach(point => {
+      csvRows.push([point.pointName, point.lastSample]);
+    });
+    
+    // Convert to CSV string
+    const csvContent = csvRows.map(row => row.join(',')).join('\n');
+    
+    // Create a blob and download link
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', `controller-health-${this.controllerHealth.controllerName}.csv`);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
   closeDialog(): void {

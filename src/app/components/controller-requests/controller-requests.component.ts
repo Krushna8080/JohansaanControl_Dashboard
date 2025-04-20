@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +27,7 @@ import { AddRequestModalComponent } from '../add-request-modal/add-request-modal
 })
 export class ControllerRequestsComponent implements OnInit {
   controllerRequests: ControllerRequest[] = [];
+  @Output() requestSubmitted = new EventEmitter<string>();
 
   constructor(
     private controllerService: ControllerService,
@@ -52,6 +53,7 @@ export class ControllerRequestsComponent implements OnInit {
       if (result) {
         this.controllerService.addControllerRequest(result).subscribe(() => {
           this.loadControllerRequests();
+          this.requestSubmitted.emit('Your request has been submitted and is being processed.');
         });
       }
     });

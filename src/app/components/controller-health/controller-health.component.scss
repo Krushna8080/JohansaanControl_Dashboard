@@ -1,7 +1,15 @@
+::ng-deep .cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
 .controller-card {
   max-width: 600px;
   margin: 40px auto;
   padding: 0;
+  position: relative;
+  z-index: 10;
+  background-color: white;
 }
 
 .card-header {

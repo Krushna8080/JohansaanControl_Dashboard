@@ -3,27 +3,85 @@
 }
 
 mat-toolbar {
-  background-color: #0046ad;
+  background-color: var(--primary-color);
   color: white;
   padding: 0 16px;
+  height: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .user-button {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  padding: 4px 10px;
+  margin-left: 8px;
+  width: auto;
+  min-width: 100px;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 51, 160, 0.3);
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.user-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 8px;
 }
 
 .user-avatar {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background-color: #eee;
-  color: #0046ad;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 14px;
+}
+
+.user-name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.arrow-icon {
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  margin-left: 2px;
+  margin-top: 1px;
+  position: relative;
+  top: 2px;
+  opacity: 0.9;
+}
+
+.dropdown-arrow {
+  display: flex;
+  justify-content: center;
+  margin-top: -8px;
+}
+
+.dropdown-arrow mat-icon {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .location-bar {
@@ -67,4 +125,48 @@ mat-toolbar {
   font-size: 0.85rem;
   line-height: 1.2;
   color: #333;
+}
+
+.title-section {
+  padding: 12px 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auditor-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #0046ad;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auditor-icon mat-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+.menu-button {
+  margin-right: 8px;
+}
+
+.toolbar-icon {
+  margin: 0 4px;
 }

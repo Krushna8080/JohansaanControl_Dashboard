@@ -5,30 +5,33 @@
   <span>OpenBlue | Enterprise Manager</span>
   <span class="spacer"></span>
   
-  <button mat-icon-button>
+  <button mat-icon-button class="toolbar-icon">
     <mat-icon>home</mat-icon>
   </button>
   
-  <button mat-icon-button>
+  <button mat-icon-button class="toolbar-icon">
     <mat-icon>lightbulb</mat-icon>
   </button>
   
-  <button mat-icon-button>
+  <button mat-icon-button class="toolbar-icon">
     <mat-icon>apps</mat-icon>
   </button>
   
-  <button mat-icon-button>
+  <button mat-icon-button class="toolbar-icon">
     <mat-icon>notifications</mat-icon>
   </button>
   
-  <button mat-icon-button>
+  <button mat-icon-button class="toolbar-icon">
     <mat-icon>help</mat-icon>
   </button>
   
   <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
-    <div class="user-avatar">BL</div>
-    <span>User</span>
-    <mat-icon>arrow_drop_down</mat-icon>
+    <div class="user-profile">
+      <div class="user-avatar">BL</div>
+      <div class="user-text-container">
+        <div class="user-name">User <mat-icon class="arrow-icon">arrow_drop_down</mat-icon></div>
+      </div>
+    </div>
   </button>
   <mat-menu #userMenu="matMenu">
     <button mat-menu-item>Profile</button>
@@ -62,5 +65,14 @@
         </div>
       </div>
     </ng-container>
+  </div>
+</div>
+
+<div class="title-section">
+  <div class="title-with-icon">
+    <div class="auditor-icon">
+      <mat-icon>assessment</mat-icon>
+    </div>
+    <h1>Data Auditor</h1>
   </div>
 </div>
