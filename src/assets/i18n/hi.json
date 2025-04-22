@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | एंटरप्राइज़ मैनेजर",
+    "USER_MENU": {
+      "PROFILE": "प्रोफाइल",
+      "SETTINGS": "सेटिंग्स",
+      "LOGOUT": "लॉगआउट"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "कनेक्टिविटी",
+      "ANOMALY_DETAILS": "एनोमली विवरण",
+      "CONTROLLER_HEALTH": "कंट्रोलर स्वास्थ्य समस्या निवारण"
+    },
+    "DATA_AUDITOR": "डेटा ऑडिटर"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "कंट्रोलर अनुरोध",
+    "ADD_REQUEST": "अनुरोध जोड़ें",
+    "FILTERS": {
+      "STATUS": "स्थिति",
+      "REQUEST_DATE": "अनुरोध तिथि",
+      "REQUESTOR": "अनुरोधकर्ता",
+      "COMPLETED_DATE": "पूर्ण तिथि"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "कंट्रोलर नाम",
+      "INSTALL_LOCATION": "इंस्टॉल स्थान",
+      "REQUEST_DATE_TIME": "अनुरोध तिथि और समय",
+      "REQUESTOR": "अनुरोधकर्ता",
+      "STATUS": "स्थिति",
+      "COMPLETED_DATE_TIME": "पूर्ण तिथि और समय",
+      "RESULTS": "परिणाम",
+      "VIEW": "देखें"
+    },
+    "STATUS": {
+      "PROCESSING": "प्रोसेसिंग",
+      "COMPLETED": "पूर्ण",
+      "CANCELLED": "रद्द"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "कंट्रोलर अनुरोध जोड़ें",
+    "FORM": {
+      "CONTROLLER": "कंट्रोलर",
+      "INSTALL_LOCATION": "इंस्टॉल स्थान",
+      "REQUESTOR": "अनुरोधकर्ता"
+    },
+    "BUTTONS": {
+      "CANCEL": "रद्द करें",
+      "SUBMIT": "सबमिट करें"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "आपका अनुरोध सबमिट कर दिया गया है और प्रोसेस किया जा रहा है।"
+  }
+} 

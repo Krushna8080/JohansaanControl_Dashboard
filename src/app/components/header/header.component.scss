@@ -170,3 +170,26 @@ h1 {
 .toolbar-icon {
   margin: 0 4px;
 }
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  border-radius: 4px;
+  background-color: rgba(0, 51, 160, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 8px;
+  height: 32px;
+}
+
+.language-button mat-icon {
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.language-button span {
+  font-size: 14px;
+  font-weight: 500;
+}

@@ -1,31 +1,115 @@
 <div class="controller-requests-container">
   <div class="header">
-    <h1>Controller Requests</h1>
+    <h1>{{ 'CONTROLLER_REQUESTS.TITLE' | translate }}</h1>
     <button class="add-request-btn" (click)="openAddRequestModal()">
       <mat-icon>add</mat-icon>
-      Add a Request
+      {{ 'CONTROLLER_REQUESTS.ADD_REQUEST' | translate }}
     </button>
   </div>
   
   <div class="filters">
-    <button class="filter-button">
-      Status
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
+    <!-- Status filter -->
+    <div class="filter-dropdown">
+      <button class="filter-button" [matMenuTriggerFor]="statusMenu" #statusMenuTrigger="matMenuTrigger">
+        {{ 'CONTROLLER_REQUESTS.FILTERS.STATUS' | translate }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #statusMenu="matMenu" class="filter-menu">
+        <div class="filter-menu-content" (click)="$event.stopPropagation()">
+          <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.STATUS' | translate }}</h3>
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-select [formControl]="getStatusControl()" (selectionChange)="applyFilters()">
+              <mat-option value="">{{ 'All' }}</mat-option>
+              <mat-option *ngFor="let status of statusOptions" [value]="status">
+                {{ 'CONTROLLER_REQUESTS.STATUS.' + status.toUpperCase() | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-menu>
+    </div>
     
-    <button class="filter-button">
-      Request Date
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
+    <!-- Request Date filter -->
+    <div class="filter-dropdown">
+      <button class="filter-button" [matMenuTriggerFor]="requestDateMenu" #requestDateMenuTrigger="matMenuTrigger">
+        {{ 'CONTROLLER_REQUESTS.FILTERS.REQUEST_DATE' | translate }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #requestDateMenu="matMenu" class="filter-menu">
+        <div class="filter-menu-content" (click)="$event.stopPropagation()">
+          <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.REQUEST_DATE' | translate }}</h3>
+          <div class="date-range compact-date">
+            <mat-form-field appearance="outline" class="filter-field">
+              <mat-label>{{ 'From' }}</mat-label>
+              <input matInput [matDatepicker]="requestStartPicker" [formControl]="getRequestDateStartControl()">
+              <mat-datepicker-toggle matSuffix [for]="requestStartPicker"></mat-datepicker-toggle>
+              <mat-datepicker #requestStartPicker (closed)="applyFilters()"></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="filter-field">
+              <mat-label>{{ 'To' }}</mat-label>
+              <input matInput [matDatepicker]="requestEndPicker" [formControl]="getRequestDateEndControl()">
+              <mat-datepicker-toggle matSuffix [for]="requestEndPicker"></mat-datepicker-toggle>
+              <mat-datepicker #requestEndPicker (closed)="applyFilters()"></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
     
-    <button class="filter-button">
-      Requestor
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
+    <!-- Requestor filter -->
+    <div class="filter-dropdown">
+      <button class="filter-button" [matMenuTriggerFor]="requestorMenu" #requestorMenuTrigger="matMenuTrigger">
+        {{ 'CONTROLLER_REQUESTS.FILTERS.REQUESTOR' | translate }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #requestorMenu="matMenu" class="filter-menu">
+        <div class="filter-menu-content" (click)="$event.stopPropagation()">
+          <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.REQUESTOR' | translate }}</h3>
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-select [formControl]="getRequestorControl()" (selectionChange)="applyFilters()">
+              <mat-option value="">{{ 'All' }}</mat-option>
+              <mat-option *ngFor="let requestor of requestorOptions" [value]="requestor">
+                {{ requestor }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-menu>
+    </div>
     
-    <button class="filter-button">
-      Completed Date
-      <mat-icon>arrow_drop_down</mat-icon>
+    <!-- Completed Date filter -->
+    <div class="filter-dropdown">
+      <button class="filter-button" [matMenuTriggerFor]="completedDateMenu" #completedDateMenuTrigger="matMenuTrigger">
+        {{ 'CONTROLLER_REQUESTS.FILTERS.COMPLETED_DATE' | translate }}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #completedDateMenu="matMenu" class="filter-menu">
+        <div class="filter-menu-content" (click)="$event.stopPropagation()">
+          <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.COMPLETED_DATE' | translate }}</h3>
+          <div class="date-range compact-date">
+            <mat-form-field appearance="outline" class="filter-field">
+              <mat-label>{{ 'From' }}</mat-label>
+              <input matInput [matDatepicker]="completedStartPicker" [formControl]="getCompletedDateStartControl()">
+              <mat-datepicker-toggle matSuffix [for]="completedStartPicker"></mat-datepicker-toggle>
+              <mat-datepicker #completedStartPicker (closed)="applyFilters()"></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="filter-field">
+              <mat-label>{{ 'To' }}</mat-label>
+              <input matInput [matDatepicker]="completedEndPicker" [formControl]="getCompletedDateEndControl()">
+              <mat-datepicker-toggle matSuffix [for]="completedEndPicker"></mat-datepicker-toggle>
+              <mat-datepicker #completedEndPicker (closed)="applyFilters()"></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+    
+    <!-- Clear filters button -->
+    <button class="clear-filters-btn" *ngIf="filterForm.dirty" (click)="clearFilters()">
+      <mat-icon>close</mat-icon>
+      {{ 'Clear Filters' }}
     </button>
   </div>
   
@@ -33,29 +117,77 @@
     <table>
       <thead>
         <tr>
-          <th>Controller Name <mat-icon>arrow_downward</mat-icon></th>
-          <th>Install Location <mat-icon>arrow_downward</mat-icon></th>
-          <th>Request Date & Time <mat-icon>arrow_downward</mat-icon></th>
-          <th>Requestor <mat-icon>arrow_downward</mat-icon></th>
-          <th>Status</th>
-          <th>Completed Date & Time</th>
-          <th>Results</th>
+          <th (click)="sortBy('controllerName')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.CONTROLLER_NAME' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('controllerName')">arrow_downward</mat-icon>
+          </th>
+          <th (click)="sortBy('installLocation')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.INSTALL_LOCATION' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('installLocation')">arrow_downward</mat-icon>
+          </th>
+          <th (click)="sortBy('requestDate')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.REQUEST_DATE_TIME' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('requestDate')">arrow_downward</mat-icon>
+          </th>
+          <th (click)="sortBy('requestor')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.REQUESTOR' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('requestor')">arrow_downward</mat-icon>
+          </th>
+          <th (click)="sortBy('status')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.STATUS' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('status')">arrow_downward</mat-icon>
+          </th>
+          <th (click)="sortBy('completedDate')">
+            {{ 'CONTROLLER_REQUESTS.TABLE.COMPLETED_DATE_TIME' | translate }}
+            <mat-icon [ngClass]="getSortIconClass('completedDate')">arrow_downward</mat-icon>
+          </th>
+          <th>{{ 'CONTROLLER_REQUESTS.TABLE.RESULTS' | translate }}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let request of controllerRequests">
           <td>{{ request.controllerName }}</td>
           <td>{{ request.installLocation }}</td>
-          <td>{{ request.requestDate }}</td>
+          <td>{{ formatDateTime(request.requestDate) }}</td>
           <td>{{ request.requestor }}</td>
-          <td [ngClass]="{'status-processing': request.status === 'Processing', 'status-completed': request.status === 'Completed'}">{{ request.status }}</td>
-          <td>{{ request.completedDate || '-' }}</td>
+          <td [ngClass]="{
+            'status-processing': request.status === 'Processing',
+            'status-completed': request.status === 'Completed',
+            'status-cancelled': request.status === 'Cancelled'
+          }">
+            {{ 'CONTROLLER_REQUESTS.STATUS.' + request.status.toUpperCase() | translate }}
+          </td>
+          <td>{{ formatDateTime(request.completedDate) }}</td>
           <td>
-            <a *ngIf="request.status === 'Completed'" [routerLink]="['/controller', request.id]" class="view-link">View</a>
+            <a *ngIf="request.status === 'Completed'" [routerLink]="['/controller', request.id]" class="view-link">
+              {{ 'CONTROLLER_REQUESTS.TABLE.VIEW' | translate }}
+            </a>
             <span *ngIf="request.status !== 'Completed'">-</span>
           </td>
         </tr>
       </tbody>
     </table>
+    
+    <!-- Pagination -->
+    <mat-paginator
+      [length]="totalRequests"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="currentPage"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+      aria-label="Select page of controller requests">
+    </mat-paginator>
+    
+    <!-- Loading indicator -->
+    <div class="loading-container" *ngIf="loading">
+      <div class="loading-spinner"></div>
+      <p>{{ 'Loading...' }}</p>
+    </div>
+    
+    <!-- No results message -->
+    <div class="no-results" *ngIf="controllerRequests.length === 0 && !loading">
+      <p>{{ 'No controller requests found.' }}</p>
+    </div>
   </div>
 </div>

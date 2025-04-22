@@ -1,33 +1,69 @@
 <div class="modal-header">
-  <h2>Add a Request</h2>
+  <h2>{{ 'ADD_REQUEST_MODAL.TITLE' | translate }}</h2>
   <button mat-icon-button (click)="onCancel()">
     <mat-icon>close</mat-icon>
   </button>
 </div>
 
 <div class="modal-body">
-  <div class="form-group">
-    <label for="controller">Controller Name</label>
-    <div class="select-wrapper">
+  <form [formGroup]="requestForm">
+    <div class="form-group">
+      <label for="controller">{{ 'ADD_REQUEST_MODAL.FORM.CONTROLLER' | translate }}</label>
+      <div class="select-wrapper">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-select formControlName="controllerName" placeholder="Choose a controller">
+            <mat-option *ngFor="let controller of controllers" [value]="controller.name">
+              {{ controller.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="requestForm.get('controllerName')?.invalid">
+            Controller is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="location">{{ 'ADD_REQUEST_MODAL.FORM.INSTALL_LOCATION' | translate }}</label>
       <mat-form-field appearance="outline" class="full-width">
-        <mat-select [(ngModel)]="selectedController" placeholder="Choose an Option">
-          <mat-option *ngFor="let option of controllerOptions" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-select>
+        <input matInput formControlName="installLocation" readonly>
       </mat-form-field>
     </div>
-  </div>
-  
-  <div class="form-group">
-    <label for="email">Email Address for Notification</label>
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput [(ngModel)]="emailNotification" type="email" placeholder="Enter email address">
-    </mat-form-field>
-  </div>
+    
+    <div class="form-group">
+      <label for="requestor">{{ 'ADD_REQUEST_MODAL.FORM.REQUESTOR' | translate }}</label>
+      <div class="select-wrapper">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-select formControlName="requestor" placeholder="Choose a requestor">
+            <mat-option *ngFor="let requestor of requestors" [value]="requestor">
+              {{ requestor }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="requestForm.get('requestor')?.invalid">
+            Requestor is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email Address for Notification (Optional)</label>
+      <mat-form-field appearance="outline" class="full-width">
+        <input matInput formControlName="emailNotification" type="email" placeholder="Enter email address">
+        <mat-error *ngIf="requestForm.get('emailNotification')?.invalid">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="timezone-info">
+      <mat-icon>schedule</mat-icon>
+      <span>Request will be created in your local timezone: {{ currentTimezone }}</span>
+    </div>
+  </form>
 </div>
 
 <div class="modal-footer">
-  <button mat-button class="btn-secondary" (click)="onCancel()">Cancel</button>
-  <button mat-button class="btn-primary" (click)="onSubmit()" [disabled]="!selectedController">Submit</button>
+  <button mat-button class="btn-secondary" (click)="onCancel()">{{ 'ADD_REQUEST_MODAL.BUTTONS.CANCEL' | translate }}</button>
+  <button mat-button class="btn-primary" (click)="onSubmit()" [disabled]="requestForm.invalid">{{ 'ADD_REQUEST_MODAL.BUTTONS.SUBMIT' | translate }}</button>
 </div>

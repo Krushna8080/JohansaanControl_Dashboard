@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | Enterprise Manager",
+    "USER_MENU": {
+      "PROFILE": "Profile",
+      "SETTINGS": "Settings",
+      "LOGOUT": "Logout"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "Connectivity",
+      "ANOMALY_DETAILS": "Anomaly Details",
+      "CONTROLLER_HEALTH": "Troubleshoot Controller Health"
+    },
+    "DATA_AUDITOR": "Data Auditor"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "Controller Requests",
+    "ADD_REQUEST": "Add a Request",
+    "FILTERS": {
+      "STATUS": "Status",
+      "REQUEST_DATE": "Request Date",
+      "REQUESTOR": "Requestor",
+      "COMPLETED_DATE": "Completed Date"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "Controller Name",
+      "INSTALL_LOCATION": "Install Location",
+      "REQUEST_DATE_TIME": "Request Date & Time",
+      "REQUESTOR": "Requestor",
+      "STATUS": "Status",
+      "COMPLETED_DATE_TIME": "Completed Date & Time",
+      "RESULTS": "Results",
+      "VIEW": "View"
+    },
+    "STATUS": {
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "Add Controller Request",
+    "FORM": {
+      "CONTROLLER": "Controller",
+      "INSTALL_LOCATION": "Install Location",
+      "REQUESTOR": "Requestor"
+    },
+    "BUTTONS": {
+      "CANCEL": "Cancel",
+      "SUBMIT": "Submit"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "Your request has been submitted and is being processed."
+  }
+} 

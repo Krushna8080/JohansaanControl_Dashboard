@@ -25,6 +25,18 @@
     <mat-icon>help</mat-icon>
   </button>
   
+  <!-- Language Selector -->
+  <button mat-button [matMenuTriggerFor]="languageMenu" class="language-button">
+    <mat-icon>language</mat-icon>
+    <span>{{ getCurrentLanguageName() }}</span>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item *ngFor="let lang of availableLanguages" (click)="changeLanguage(lang.code)">
+      {{ lang.name }}
+    </button>
+  </mat-menu>
+  
   <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
     <div class="user-profile">
       <div class="user-avatar">BL</div>

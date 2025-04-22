@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | مدير المؤسسة",
+    "USER_MENU": {
+      "PROFILE": "الملف الشخصي",
+      "SETTINGS": "الإعدادات",
+      "LOGOUT": "تسجيل الخروج"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "الاتصال",
+      "ANOMALY_DETAILS": "تفاصيل الشذوذ",
+      "CONTROLLER_HEALTH": "استكشاف أخطاء صحة وحدة التحكم وإصلاحها"
+    },
+    "DATA_AUDITOR": "مدقق البيانات"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "طلبات وحدة التحكم",
+    "ADD_REQUEST": "إضافة طلب",
+    "FILTERS": {
+      "STATUS": "الحالة",
+      "REQUEST_DATE": "تاريخ الطلب",
+      "REQUESTOR": "مقدم الطلب",
+      "COMPLETED_DATE": "تاريخ الإكمال"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "اسم وحدة التحكم",
+      "INSTALL_LOCATION": "موقع التثبيت",
+      "REQUEST_DATE_TIME": "تاريخ ووقت الطلب",
+      "REQUESTOR": "مقدم الطلب",
+      "STATUS": "الحالة",
+      "COMPLETED_DATE_TIME": "تاريخ ووقت الإكمال",
+      "RESULTS": "النتائج",
+      "VIEW": "عرض"
+    },
+    "STATUS": {
+      "PROCESSING": "قيد المعالجة",
+      "COMPLETED": "مكتمل",
+      "CANCELLED": "ملغي"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "إضافة طلب وحدة التحكم",
+    "FORM": {
+      "CONTROLLER": "وحدة التحكم",
+      "INSTALL_LOCATION": "موقع التثبيت",
+      "REQUESTOR": "مقدم الطلب"
+    },
+    "BUTTONS": {
+      "CANCEL": "إلغاء",
+      "SUBMIT": "إرسال"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "تم تقديم طلبك وهو قيد المعالجة."
+  }
+} 

@@ -4,7 +4,7 @@ export interface ControllerRequest {
   installLocation: string;
   requestDate: string;
   requestor: string;
-  status: 'Processing' | 'Completed';
+  status: 'Processing' | 'Completed' | 'Cancelled';
   completedDate?: string;
 }
 

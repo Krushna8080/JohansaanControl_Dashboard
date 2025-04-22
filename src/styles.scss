@@ -21,6 +21,35 @@ html, body {
   --gray-dark: #6c757d;
 }
 
+/* Dialog styles */
+.compact-dialog .mat-mdc-dialog-container {
+  padding: 0 !important;
+}
+
+.compact-dialog .mat-mdc-dialog-surface {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.compact-dialog .modal-body {
+  padding: 16px !important;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.compact-dialog .modal-header {
+  padding: 12px 16px !important;
+}
+
+.compact-dialog .modal-footer {
+  padding: 12px 16px !important;
+}
+
+.compact-dialog .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Default styles */
 .mat-mdc-card {
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;

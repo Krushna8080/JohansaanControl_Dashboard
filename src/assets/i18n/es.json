@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | Gestor Empresarial",
+    "USER_MENU": {
+      "PROFILE": "Perfil",
+      "SETTINGS": "Configuración",
+      "LOGOUT": "Cerrar sesión"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "Conectividad",
+      "ANOMALY_DETAILS": "Detalles de anomalías",
+      "CONTROLLER_HEALTH": "Solucionar problemas de salud del controlador"
+    },
+    "DATA_AUDITOR": "Auditor de datos"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "Solicitudes de controlador",
+    "ADD_REQUEST": "Agregar solicitud",
+    "FILTERS": {
+      "STATUS": "Estado",
+      "REQUEST_DATE": "Fecha de solicitud",
+      "REQUESTOR": "Solicitante",
+      "COMPLETED_DATE": "Fecha de finalización"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "Nombre del controlador",
+      "INSTALL_LOCATION": "Ubicación de instalación",
+      "REQUEST_DATE_TIME": "Fecha y hora de solicitud",
+      "REQUESTOR": "Solicitante",
+      "STATUS": "Estado",
+      "COMPLETED_DATE_TIME": "Fecha y hora de finalización",
+      "RESULTS": "Resultados",
+      "VIEW": "Ver"
+    },
+    "STATUS": {
+      "PROCESSING": "En proceso",
+      "COMPLETED": "Completado",
+      "CANCELLED": "Cancelado"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "Agregar solicitud de controlador",
+    "FORM": {
+      "CONTROLLER": "Controlador",
+      "INSTALL_LOCATION": "Ubicación de instalación",
+      "REQUESTOR": "Solicitante"
+    },
+    "BUTTONS": {
+      "CANCEL": "Cancelar",
+      "SUBMIT": "Enviar"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "Su solicitud ha sido enviada y está siendo procesada."
+  }
+} 

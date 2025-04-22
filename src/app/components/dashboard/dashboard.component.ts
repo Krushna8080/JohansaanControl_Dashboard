@@ -10,10 +10,10 @@ import { MatTabsModule } from '@angular/material/tabs';
   standalone: true,
   imports: [
     CommonModule,
+    MatTabsModule,
     HeaderComponent,
     ControllerRequestsComponent,
-    NotificationComponent,
-    MatTabsModule
+    NotificationComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
