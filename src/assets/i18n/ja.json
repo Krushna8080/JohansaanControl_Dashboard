@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | エンタープライズマネージャー",
+    "USER_MENU": {
+      "PROFILE": "プロフィール",
+      "SETTINGS": "設定",
+      "LOGOUT": "ログアウト"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "接続性",
+      "ANOMALY_DETAILS": "異常の詳細",
+      "CONTROLLER_HEALTH": "コントローラーの状態"
+    },
+    "DATA_AUDITOR": "データ監査"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "コントローラーリクエスト",
+    "ADD_REQUEST": "リクエストを追加",
+    "FILTERS": {
+      "STATUS": "ステータス",
+      "REQUEST_DATE": "リクエスト日",
+      "REQUESTOR": "依頼者",
+      "COMPLETED_DATE": "完了日"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "コントローラー名",
+      "INSTALL_LOCATION": "設置場所",
+      "REQUEST_DATE_TIME": "リクエスト日時",
+      "REQUESTOR": "依頼者",
+      "STATUS": "ステータス",
+      "COMPLETED_DATE_TIME": "完了日時",
+      "RESULTS": "結果",
+      "VIEW": "表示"
+    },
+    "STATUS": {
+      "PROCESSING": "処理中",
+      "COMPLETED": "完了",
+      "CANCELLED": "キャンセル"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "コントローラーリクエストを追加",
+    "FORM": {
+      "CONTROLLER": "コントローラー",
+      "INSTALL_LOCATION": "設置場所",
+      "REQUESTOR": "依頼者"
+    },
+    "BUTTONS": {
+      "CANCEL": "キャンセル",
+      "SUBMIT": "送信"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "リクエストが送信され、処理されます。"
+  }
+} 

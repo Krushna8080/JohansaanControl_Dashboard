@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | Enterprise Manager",
+    "USER_MENU": {
+      "PROFILE": "Profiel",
+      "SETTINGS": "Instellingen",
+      "LOGOUT": "Afmelden"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "Connectiviteit",
+      "ANOMALY_DETAILS": "Anomaliedetails",
+      "CONTROLLER_HEALTH": "Controller probleemoplossing"
+    },
+    "DATA_AUDITOR": "Data-auditor"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "Controller verzoeken",
+    "ADD_REQUEST": "Verzoek toevoegen",
+    "FILTERS": {
+      "STATUS": "Status",
+      "REQUEST_DATE": "Aanvraagdatum",
+      "REQUESTOR": "Aanvrager",
+      "COMPLETED_DATE": "Voltooiingsdatum"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "Controllernaam",
+      "INSTALL_LOCATION": "Installatielocatie",
+      "REQUEST_DATE_TIME": "Aanvraag datum/tijd",
+      "REQUESTOR": "Aanvrager",
+      "STATUS": "Status",
+      "COMPLETED_DATE_TIME": "Voltooiingsdatum/-tijd",
+      "RESULTS": "Resultaten",
+      "VIEW": "Bekijken"
+    },
+    "STATUS": {
+      "PROCESSING": "Verwerken",
+      "COMPLETED": "Voltooid",
+      "CANCELLED": "Geannuleerd"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "Controller verzoek toevoegen",
+    "FORM": {
+      "CONTROLLER": "Controller",
+      "INSTALL_LOCATION": "Installatielocatie",
+      "REQUESTOR": "Aanvrager"
+    },
+    "BUTTONS": {
+      "CANCEL": "Annuleren",
+      "SUBMIT": "Indienen"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "Uw verzoek is ingediend en zal worden verwerkt."
+  }
+} 

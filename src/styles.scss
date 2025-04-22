@@ -19,6 +19,46 @@ html, body {
   --gray-light: #f8f9fa;
   --gray-medium: #e9ecef;
   --gray-dark: #6c757d;
+  --whatsapp-green: #128C7E;
+  --dark-green: #0F4336;
+}
+
+/* Notification bar - clean, flat style */
+.notification-bar {
+  color: white !important;
+}
+
+/* Adjust the containing snackbar */
+.mat-mdc-snack-bar-container {
+  background-color: #0F4336 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #0F4336 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  min-width: 100% !important;
+  box-shadow: none !important;
+}
+
+.notification-bar .mat-mdc-snack-bar-label {
+  padding: 16px !important;
+  color: white !important;
+}
+
+.notification-bar .mdc-snackbar__actions {
+  padding: 8px !important;
+}
+
+.notification-bar .mdc-button {
+  color: white !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
 }
 
 /* Dialog styles */
@@ -49,16 +89,62 @@ html, body {
   width: 100%;
 }
 
+/* Filter dropdown styles */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filter-button mat-icon {
+  margin-left: 4px;
+}
+
+.filter-button:hover {
+  background-color: var(--gray-light);
+}
+
+.filter-menu {
+  margin-top: 0 !important;
+}
+
+/* Improved menu styles */
+.filter-menu-content {
+  padding: 16px;
+  min-width: 260px;
+}
+
+.filter-menu-content h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Keep the dropdown open while interacting with its contents */
+.cdk-overlay-container {
+  pointer-events: auto !important;
+}
+
+.cdk-overlay-backdrop {
+  pointer-events: none !important;
+}
+
 /* Default styles */
 .mat-mdc-card {
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
-}
-
-.success-toast {
-  background-color: #dff6dd;
-  color: #1e8e3e;
-  border-left: 4px solid #1e8e3e;
 }
 
 .btn-primary {
@@ -112,20 +198,6 @@ td {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-}
-
-.filter-button {
-  display: flex;
-  align-items: center;
-  background: white;
-  border: 1px solid var(--gray-medium);
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.filter-button mat-icon {
-  margin-left: 4px;
 }
 
 .add-request-btn {
@@ -194,9 +266,4 @@ td {
   background-color: white;
   color: var(--gray-dark);
   border: 1px solid var(--gray-medium);
-}
-
-.btn-primary {
-  background-color: var(--primary-color);
-  color: white;
 }

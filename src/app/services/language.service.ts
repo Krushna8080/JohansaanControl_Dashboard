@@ -20,7 +20,9 @@ export class LanguageService {
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
     { code: 'pt', name: 'Português', flag: '🇵🇹' },
     { code: 'ja', name: '日本語', flag: '🇯🇵' },
-    { code: 'zh', name: '中文', flag: '🇨🇳' }
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+    { code: 'nl', name: 'Nederlands', flag: '🇳🇱' }
   ];
 
   private currentLanguageSubject = new BehaviorSubject<SupportedLanguage>(this.supportedLanguages[0]);
@@ -72,19 +74,23 @@ export class LanguageService {
     const language = this.supportedLanguages.find(lang => lang.code === langCode);
     
     if (language) {
-      // Update the translate service
-      this.translateService.use(langCode);
-      
-      // Update current language
-      this.currentLanguageSubject.next(language);
-      
-      // Save to localStorage for persistence
-      localStorage.setItem('preferredLanguage', langCode);
-      
-      // Update document lang attribute for accessibility
-      document.documentElement.lang = langCode;
+      try {
+        // Update the translate service
+        this.translateService.use(langCode);
+        
+        // Update current language
+        this.currentLanguageSubject.next(language);
+        
+        // Save to localStorage for persistence
+        localStorage.setItem('preferredLanguage', langCode);
+        
+        // Update document lang attribute for accessibility
+        document.documentElement.lang = langCode;
 
-      console.log(`Language changed to: ${language.name} (${langCode})`);
+        console.log(`Language changed to: ${language.name} (${langCode})`);
+      } catch (error) {
+        console.error(`Error setting language to ${langCode}:`, error);
+      }
     } else {
       console.warn(`Language code not supported: ${langCode}`);
     }
@@ -147,7 +153,12 @@ export class LanguageService {
       'IN': 'en',
       'AE': 'ar',
       'SA': 'ar',
-      'EG': 'ar'
+      'EG': 'ar',
+      'IT': 'it',
+      'SM': 'it',
+      'VA': 'it',
+      'NL': 'nl',
+      'BE': 'nl'
     };
     
     return languageMap[countryCode] || 'en';

@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | 企业管理器",
+    "USER_MENU": {
+      "PROFILE": "个人资料",
+      "SETTINGS": "设置",
+      "LOGOUT": "退出"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "连接性",
+      "ANOMALY_DETAILS": "异常详情",
+      "CONTROLLER_HEALTH": "控制器健康状况"
+    },
+    "DATA_AUDITOR": "数据审计员"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "控制器请求",
+    "ADD_REQUEST": "添加请求",
+    "FILTERS": {
+      "STATUS": "状态",
+      "REQUEST_DATE": "请求日期",
+      "REQUESTOR": "请求人",
+      "COMPLETED_DATE": "完成日期"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "控制器名称",
+      "INSTALL_LOCATION": "安装位置",
+      "REQUEST_DATE_TIME": "请求日期/时间",
+      "REQUESTOR": "请求人",
+      "STATUS": "状态",
+      "COMPLETED_DATE_TIME": "完成日期/时间",
+      "RESULTS": "结果",
+      "VIEW": "查看"
+    },
+    "STATUS": {
+      "PROCESSING": "处理中",
+      "COMPLETED": "已完成",
+      "CANCELLED": "已取消"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "添加控制器请求",
+    "FORM": {
+      "CONTROLLER": "控制器",
+      "INSTALL_LOCATION": "安装位置",
+      "REQUESTOR": "请求人"
+    },
+    "BUTTONS": {
+      "CANCEL": "取消",
+      "SUBMIT": "提交"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "您的请求已提交，将会被处理。"
+  }
+} 

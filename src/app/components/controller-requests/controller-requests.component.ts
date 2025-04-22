@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -21,6 +21,7 @@ import { LanguageService } from '../../services/language.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MenuHoverDirective } from '../../directives/menu-hover.directive';
 
 @Component({
   selector: 'app-controller-requests',
@@ -39,12 +40,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatSelectModule,
     MatPaginatorModule,
-    TranslateModule
+    TranslateModule,
+    MenuHoverDirective
   ],
   templateUrl: './controller-requests.component.html',
   styleUrl: './controller-requests.component.scss'
 })
-export class ControllerRequestsComponent implements OnInit {
+export class ControllerRequestsComponent implements OnInit, OnDestroy {
   controllerRequests: ControllerRequest[] = [];
   totalRequests: number = 0;
   currentPage: number = 0;
@@ -233,10 +235,17 @@ export class ControllerRequestsComponent implements OnInit {
               
               // Use the new reload method to refresh data
               this.reloadData();
+              
+              // Show notification with the new style
               this.snackBar.open(
-                this.translateService.instant('CONTROLLER_REQUESTS.REQUEST_ADDED_SUCCESSFULLY'),
-                this.translateService.instant('COMMON.CLOSE'),
-                { duration: 3000 }
+                '✓ Your request has been submitted and is being processed.',
+                'DISMISS',
+                { 
+                  duration: 5000,
+                  panelClass: ['notification-bar'],
+                  horizontalPosition: 'center',
+                  verticalPosition: 'bottom'
+                }
               );
             },
             error: (error) => {
@@ -244,7 +253,11 @@ export class ControllerRequestsComponent implements OnInit {
               this.snackBar.open(
                 this.translateService.instant('CONTROLLER_REQUESTS.ERROR_ADDING_REQUEST'),
                 this.translateService.instant('COMMON.CLOSE'),
-                { duration: 3000 }
+                { 
+                  duration: 3000,
+                  verticalPosition: 'bottom',
+                  horizontalPosition: 'center'
+                }
               );
             }
           });
@@ -370,7 +383,7 @@ export class ControllerRequestsComponent implements OnInit {
   applyFilters(): void {
     this.currentPage = 0;
     this.loadControllerRequests(true);
-    this.closeFilterMenus();
+    // Don't close the menu - this allows users to make multiple selections
   }
   
   ngOnDestroy(): void {

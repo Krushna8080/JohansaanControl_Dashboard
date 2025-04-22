@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | Enterprise Manager",
+    "USER_MENU": {
+      "PROFILE": "Profilo",
+      "SETTINGS": "Impostazioni",
+      "LOGOUT": "Esci"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "Connettività",
+      "ANOMALY_DETAILS": "Dettagli anomalie",
+      "CONTROLLER_HEALTH": "Stato controller"
+    },
+    "DATA_AUDITOR": "Controllo dati"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "Richieste controller",
+    "ADD_REQUEST": "Aggiungi richiesta",
+    "FILTERS": {
+      "STATUS": "Stato",
+      "REQUEST_DATE": "Data richiesta",
+      "REQUESTOR": "Richiedente",
+      "COMPLETED_DATE": "Data completamento"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "Nome controller",
+      "INSTALL_LOCATION": "Luogo di installazione",
+      "REQUEST_DATE_TIME": "Data/ora richiesta",
+      "REQUESTOR": "Richiedente",
+      "STATUS": "Stato",
+      "COMPLETED_DATE_TIME": "Data/ora completamento",
+      "RESULTS": "Risultati",
+      "VIEW": "Visualizza"
+    },
+    "STATUS": {
+      "PROCESSING": "In elaborazione",
+      "COMPLETED": "Completato",
+      "CANCELLED": "Annullato"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "Aggiungi richiesta controller",
+    "FORM": {
+      "CONTROLLER": "Controller",
+      "INSTALL_LOCATION": "Luogo di installazione",
+      "REQUESTOR": "Richiedente"
+    },
+    "BUTTONS": {
+      "CANCEL": "Annulla",
+      "SUBMIT": "Invia"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "La tua richiesta è stata inviata e sarà elaborata."
+  }
+} 

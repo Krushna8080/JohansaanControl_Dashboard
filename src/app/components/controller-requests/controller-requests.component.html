@@ -9,12 +9,12 @@
   
   <div class="filters">
     <!-- Status filter -->
-    <div class="filter-dropdown">
+    <div class="filter-dropdown" [appMenuHover]="statusMenuTrigger">
       <button class="filter-button" [matMenuTriggerFor]="statusMenu" #statusMenuTrigger="matMenuTrigger">
         {{ 'CONTROLLER_REQUESTS.FILTERS.STATUS' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #statusMenu="matMenu" class="filter-menu">
+      <mat-menu #statusMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.STATUS' | translate }}</h3>
           <mat-form-field appearance="outline" class="filter-field">
@@ -30,12 +30,12 @@
     </div>
     
     <!-- Request Date filter -->
-    <div class="filter-dropdown">
+    <div class="filter-dropdown" [appMenuHover]="requestDateMenuTrigger">
       <button class="filter-button" [matMenuTriggerFor]="requestDateMenu" #requestDateMenuTrigger="matMenuTrigger">
         {{ 'CONTROLLER_REQUESTS.FILTERS.REQUEST_DATE' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #requestDateMenu="matMenu" class="filter-menu">
+      <mat-menu #requestDateMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.REQUEST_DATE' | translate }}</h3>
           <div class="date-range compact-date">
@@ -58,12 +58,12 @@
     </div>
     
     <!-- Requestor filter -->
-    <div class="filter-dropdown">
+    <div class="filter-dropdown" [appMenuHover]="requestorMenuTrigger">
       <button class="filter-button" [matMenuTriggerFor]="requestorMenu" #requestorMenuTrigger="matMenuTrigger">
         {{ 'CONTROLLER_REQUESTS.FILTERS.REQUESTOR' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #requestorMenu="matMenu" class="filter-menu">
+      <mat-menu #requestorMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.REQUESTOR' | translate }}</h3>
           <mat-form-field appearance="outline" class="filter-field">
@@ -79,12 +79,12 @@
     </div>
     
     <!-- Completed Date filter -->
-    <div class="filter-dropdown">
+    <div class="filter-dropdown" [appMenuHover]="completedDateMenuTrigger">
       <button class="filter-button" [matMenuTriggerFor]="completedDateMenu" #completedDateMenuTrigger="matMenuTrigger">
         {{ 'CONTROLLER_REQUESTS.FILTERS.COMPLETED_DATE' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #completedDateMenu="matMenu" class="filter-menu">
+      <mat-menu #completedDateMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <h3>{{ 'CONTROLLER_REQUESTS.FILTERS.COMPLETED_DATE' | translate }}</h3>
           <div class="date-range compact-date">

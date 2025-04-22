@@ -1,0 +1,58 @@
+{
+  "HEADER": {
+    "TITLE": "OpenBlue | Enterprise Manager",
+    "USER_MENU": {
+      "PROFILE": "Profil",
+      "SETTINGS": "Paramètres",
+      "LOGOUT": "Déconnexion"
+    }
+  },
+  "DASHBOARD": {
+    "TABS": {
+      "CONNECTIVITY": "Connectivité",
+      "ANOMALY_DETAILS": "Détails des anomalies",
+      "CONTROLLER_HEALTH": "Résolution des problèmes de santé du contrôleur"
+    },
+    "DATA_AUDITOR": "Auditeur de données"
+  },
+  "CONTROLLER_REQUESTS": {
+    "TITLE": "Demandes de contrôleur",
+    "ADD_REQUEST": "Ajouter une demande",
+    "FILTERS": {
+      "STATUS": "Statut",
+      "REQUEST_DATE": "Date de demande",
+      "REQUESTOR": "Demandeur",
+      "COMPLETED_DATE": "Date d'achèvement"
+    },
+    "TABLE": {
+      "CONTROLLER_NAME": "Nom du contrôleur",
+      "INSTALL_LOCATION": "Lieu d'installation",
+      "REQUEST_DATE_TIME": "Date et heure de la demande",
+      "REQUESTOR": "Demandeur",
+      "STATUS": "Statut",
+      "COMPLETED_DATE_TIME": "Date et heure d'achèvement",
+      "RESULTS": "Résultats",
+      "VIEW": "Voir"
+    },
+    "STATUS": {
+      "PROCESSING": "En cours",
+      "COMPLETED": "Terminé",
+      "CANCELLED": "Annulé"
+    }
+  },
+  "ADD_REQUEST_MODAL": {
+    "TITLE": "Ajouter une demande de contrôleur",
+    "FORM": {
+      "CONTROLLER": "Contrôleur",
+      "INSTALL_LOCATION": "Lieu d'installation",
+      "REQUESTOR": "Demandeur"
+    },
+    "BUTTONS": {
+      "CANCEL": "Annuler",
+      "SUBMIT": "Soumettre"
+    }
+  },
+  "NOTIFICATIONS": {
+    "REQUEST_SUBMITTED": "Votre demande a été soumise et est en cours de traitement."
+  }
+} 
