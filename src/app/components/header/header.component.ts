@@ -9,6 +9,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ControllerService } from '../../services/controller.service';
 import { LanguageService, SupportedLanguage } from '../../services/language.service';
 import { WeatherData } from '../../models/controller.model';
+import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,8 @@ import { WeatherData } from '../../models/controller.model';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    TranslateModule
+    TranslateModule,
+    LanguageSelectorComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

@@ -22,7 +22,8 @@
       "STATUS": "Status",
       "REQUEST_DATE": "Anfragedatum",
       "REQUESTOR": "Antragsteller",
-      "COMPLETED_DATE": "Abschlussdatum"
+      "COMPLETED_DATE": "Abschlussdatum",
+      "CLEAR": "Filter löschen"
     },
     "TABLE": {
       "CONTROLLER_NAME": "Controller-Name",

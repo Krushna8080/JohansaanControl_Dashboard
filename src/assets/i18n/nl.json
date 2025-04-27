@@ -22,7 +22,8 @@
       "STATUS": "Status",
       "REQUEST_DATE": "Aanvraagdatum",
       "REQUESTOR": "Aanvrager",
-      "COMPLETED_DATE": "Voltooiingsdatum"
+      "COMPLETED_DATE": "Voltooiingsdatum",
+      "CLEAR": "Filters wissen"
     },
     "TABLE": {
       "CONTROLLER_NAME": "Controllernaam",

@@ -3,11 +3,171 @@
 }
 
 mat-toolbar {
-  background-color: var(--primary-color);
+  background-color: #0033A0;
   color: white;
   padding: 0 16px;
   height: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.app-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 8px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.color-strip {
+  display: flex;
+  height: 4px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.color-segment {
+  flex: 1;
+  height: 100%;
+}
+
+.segment-blue {
+  background-color: #0033A0;
+}
+
+.segment-teal {
+  background-color: #00A3E0;
+}
+
+.segment-green {
+  background-color: #7BBE41;
+}
+
+.segment-yellow {
+  background-color: #FFD100;
+}
+
+.segment-orange {
+  background-color: #FF8300;
+}
+
+.segment-red {
+  background-color: #E03C31;
+}
+
+.header-content {
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.breadcrumb {
+  color: #0046ad;
+  font-weight: 500;
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.auditor-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #0046ad;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auditor-icon mat-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: #333;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.location-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  padding-bottom: 4px;
+  
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+  }
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.weather-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.weather-icon {
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.weather-text {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: #333;
+  
+  div:first-child {
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
 }
 
 .user-button {
@@ -23,6 +183,7 @@ mat-toolbar {
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background-color: rgba(0, 51, 160, 0.3);
+  cursor: default;
 }
 
 .user-profile {
@@ -45,7 +206,7 @@ mat-toolbar {
   height: 30px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.95);
-  color: var(--primary-color);
+  color: #0033A0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,135 +222,61 @@ mat-toolbar {
   align-items: center;
 }
 
-.arrow-icon {
-  font-size: 18px !important;
-  height: 18px !important;
-  width: 18px !important;
-  margin-left: 2px;
-  margin-top: 1px;
-  position: relative;
-  top: 2px;
-  opacity: 0.9;
-}
-
-.dropdown-arrow {
-  display: flex;
-  justify-content: center;
-  margin-top: -8px;
-}
-
-.dropdown-arrow mat-icon {
-  font-size: 20px;
-  height: 20px;
-  width: 20px;
-}
-
-.location-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background-color: white;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.breadcrumb {
-  color: #0046ad;
-  font-weight: 500;
-}
-
-.location-selector {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.weather-info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.weather-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.weather-icon {
-  color: #6c757d;
-}
-
-.weather-text {
-  font-size: 0.85rem;
-  line-height: 1.2;
-  color: #333;
-}
-
-.title-section {
-  padding: 12px 20px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.title-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.auditor-icon {
-  width: 48px;
-  height: 48px;
-  background-color: #0046ad;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.auditor-icon mat-icon {
-  width: 28px;
-  height: 28px;
-  font-size: 28px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 500;
-  color: #333;
-}
-
 .menu-button {
   margin-right: 8px;
 }
 
 .toolbar-icon {
-  margin: 0 4px;
-}
-
-.language-button {
+  margin: 0 8px;
+  color: white;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-left: 8px;
-  border-radius: 4px;
-  background-color: rgba(0, 51, 160, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0 8px;
-  height: 32px;
+  justify-content: center;
 }
 
-.language-button mat-icon {
-  font-size: 18px;
-  height: 18px;
-  width: 18px;
+.home-icon {
+  margin-right: 2px;
 }
 
-.language-button span {
-  font-size: 14px;
-  font-weight: 500;
+.header-language-selector {
+  margin: 0 4px 0 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .header-language-selector .selected-language {
+  background-color: #0033A0;
+  border-width: 0;
+  color: white;
+  padding: 0 12px;
+  border-radius: 0;
+  height: 48px;
+}
+
+:host ::ng-deep .header-language-selector .language-name {
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+:host ::ng-deep .header-language-selector .dropdown-arrow {
+  color: white;
+}
+
+:host ::ng-deep .header-language-selector .selected-language:hover {
+  background-color: #002d8e;
+}
+
+// Ensure proper z-index for all menus
+:host ::ng-deep .mat-mdc-menu-panel {
+  z-index: 1001 !important; // Higher than any other elements
+}
+
+// Fix for modal backdrop issue
+:host ::ng-deep .cdk-overlay-container {
+  z-index: 1000;
+}
+
+:host ::ng-deep .cdk-overlay-backdrop {
+  z-index: 999;
 }

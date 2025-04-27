@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -20,6 +20,32 @@ export const SUPPORTED_LANGUAGES = [
   'en', 'es', 'fr', 'de', 'pt', 'ja', 'zh', 'it', 'nl'
 ];
 
+// Factory function to initialize translations
+export function initializeLanguage(translateService: TranslateService) {
+  return () => {
+    // Set available languages
+    translateService.addLangs(SUPPORTED_LANGUAGES);
+    translateService.setDefaultLang('en');
+    
+    // Get stored language from localStorage
+    const storedLang = localStorage.getItem('preferredLanguage');
+    console.log('Initializing language, stored preference:', storedLang);
+    
+    // Use stored language if available, otherwise try browser language, then fallback to English
+    if (storedLang && SUPPORTED_LANGUAGES.includes(storedLang)) {
+      console.log('Using stored language preference:', storedLang);
+      return translateService.use(storedLang).toPromise();
+    } else {
+      const browserLang = translateService.getBrowserLang();
+      const useLang = browserLang && SUPPORTED_LANGUAGES.includes(browserLang) 
+        ? browserLang 
+        : 'en';
+      console.log('Using detected or default language:', useLang);
+      return translateService.use(useLang).toPromise();
+    }
+  };
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withComponentInputBinding()),
@@ -40,23 +66,8 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     {
-      provide: 'APP_INITIALIZER',
-      useFactory: (translateService: TranslateService) => {
-        return () => {
-          // Make sure all languages are added and available
-          translateService.addLangs(SUPPORTED_LANGUAGES);
-          translateService.setDefaultLang('en');
-          
-          // Get stored language or browser language or default to English
-          const storedLang = localStorage.getItem('preferredLanguage');
-          const browserLang = translateService.getBrowserLang();
-          const initialLang = storedLang || 
-            (browserLang && SUPPORTED_LANGUAGES.includes(browserLang) ? browserLang : 'en');
-          
-          // Set initial language
-          return translateService.use(initialLang).toPromise();
-        };
-      },
+      provide: APP_INITIALIZER,
+      useFactory: initializeLanguage,
       deps: [TranslateService],
       multi: true
     }

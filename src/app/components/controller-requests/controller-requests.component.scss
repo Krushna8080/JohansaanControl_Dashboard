@@ -23,10 +23,11 @@ h1 {
 .filters {
   display: flex;
   gap: 10px;
-  padding: 12px 20px;
-  background-color: #f7f7f7;
+  padding: 14px 20px;
+  background-color: #f7f8fa;
   border-bottom: 1px solid #e9ecef;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .filter-dropdown {
@@ -36,74 +37,120 @@ h1 {
 .filter-button {
   display: flex;
   align-items: center;
-  background: white;
-  border: 1px solid #e9ecef;
-  border-radius: 4px;
-  padding: 8px 12px;
+  justify-content: space-between;
+  background: #fafbfc;
+  border: 1px solid #e3e6e8;
+  border-radius: 3px;
+  padding: 4px 8px 4px 10px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a5a5a;
+  transition: background-color 0.2s;
+  height: 28px;
+  min-width: 115px;
+  box-shadow: none;
+
+  &:hover {
+    background-color: #f5f7fa;
+  }
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+    opacity: 0.65;
+    position: relative;
+    top: -1px;
+  }
 }
 
 .clear-filters-btn {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: #2c64c6;
   cursor: pointer;
-  padding: 8px 12px;
-  font-size: 14px;
+  padding: 5px 8px;
+  font-size: 12px;
+  margin-left: 2px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  mat-icon {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .status-processing {
-  color: var(--warning-color);
+  color: #e69c14;
 }
 
 .status-completed {
-  color: var(--success-color);
+  color: #2e8545;
 }
 
 .status-cancelled {
-  color: var(--danger-color);
+  color: #c53030;
 }
 
 .filter-menu-content {
-  padding: 12px;
+  padding: 10px;
   min-width: 220px;
   max-width: 300px;
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 16px;
-  }
+  background-color: #ffffff;
+  border-radius: 3px;
 }
 
 .filter-field {
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   
   ::ng-deep .mat-mdc-form-field-infix {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     min-height: auto;
   }
   
   ::ng-deep .mat-mdc-text-field-wrapper {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #fbfbfc;
+    border-radius: 3px;
+    border: 1px solid #eaedf0;
   }
   
   ::ng-deep .mat-mdc-form-field-subscript-wrapper {
     display: none;
+  }
+  
+  ::ng-deep .mat-mdc-select-arrow {
+    margin-top: -2px;
+    color: rgba(0, 0, 0, 0.45);
+  }
+  
+  ::ng-deep .mat-mdc-select-value {
+    font-size: 13px;
+    color: #555;
+  }
+  
+  ::ng-deep .mat-mdc-option {
+    font-size: 13px;
+    min-height: 32px;
   }
 }
 
 .compact-date {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 
   .filter-field {
     width: 100%;
@@ -124,6 +171,9 @@ h1 {
 
 // Styling for the date picker popup
 ::ng-deep .mat-datepicker-content {
+  border-radius: 3px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  
   .mat-calendar {
     height: auto;
     width: auto;
@@ -133,10 +183,10 @@ h1 {
 // Make form fields smaller
 ::ng-deep .mat-mdc-form-field {
   &.filter-field {
-    font-size: 14px;
+    font-size: 13px;
     
     .mat-mdc-form-field-flex {
-      padding: 0 8px;
+      padding: 0 6px;
     }
     
     .mat-mdc-select-arrow-wrapper {
@@ -148,18 +198,63 @@ h1 {
 // Styles for dropdown menus
 ::ng-deep .mat-menu-panel.filter-menu {
   max-width: 320px;
+  border-radius: 3px;
+  margin-top: 2px;
+  overflow: visible;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 20px;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    transform: rotate(45deg);
+    border-top: 1px solid #e3e6e8;
+    border-left: 1px solid #e3e6e8;
+    z-index: -1;
+  }
+}
+
+// Menu hover behavior
+::ng-deep .cdk-overlay-backdrop {
+  &.cdk-overlay-transparent-backdrop {
+    &.mat-menu-backdrop {
+      // Make backdrop click close the menu
+      pointer-events: auto !important;
+    }
+  }
+}
+
+// Status filter options styling
+::ng-deep .mat-mdc-option {
+  &.status-completed {
+    color: #2e8545;
+  }
+  
+  &.status-processing {
+    color: #e69c14;
+  }
+  
+  &.status-cancelled {
+    color: #c53030;
+  }
 }
 
 // Sorting icons
 .sort-icon-inactive {
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .sort-icon-asc {
+  opacity: 1 !important;
   transform: rotate(180deg);
 }
 
 .sort-icon-desc {
+  opacity: 1 !important;
   transform: rotate(0deg);
 }
 
@@ -174,6 +269,23 @@ th mat-icon {
   width: 16px;
   height: 16px;
   transition: transform 0.2s;
+}
+
+// Make table headers for non-sortable columns show inactive style
+th:not([class^="sort-icon-"]) mat-icon {
+  opacity: 0.4;
+}
+
+.table-container {
+  padding: 0 20px;
+  overflow-x: auto;
+}
+
+td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 13px;
+  color: #333;
 }
 
 // Loading spinner
@@ -223,38 +335,53 @@ th mat-icon {
 .no-results {
   padding: 24px 0;
   text-align: center;
-  color: var(--gray-dark);
-}
-
-// Make table headers for non-sortable columns show inactive style
-th:not([class^="sort-icon-"]) mat-icon {
-  opacity: 0.4;
-}
-
-.table-container {
-  padding: 0 20px;
-  overflow-x: auto;
-}
-
-td {
-  padding: 12px 8px;
-  border-bottom: 1px solid #e9ecef;
+  color: #777;
+  font-size: 14px;
 }
 
 .add-request-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: var(--primary-color);
+  gap: 6px;
+  background-color: #1A4DC6;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: normal;
+  font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  height: 34px;
+}
+
+.add-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  margin-left: 2px;
 }
 
 .add-request-btn mat-icon {
-  font-size: 18px;
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  color: #1A4DC6;
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-button {
+    width: 100%;
+    justify-content: space-between;
+  }
 }

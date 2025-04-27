@@ -88,6 +88,11 @@ export class LanguageService {
         document.documentElement.lang = langCode;
 
         console.log(`Language changed to: ${language.name} (${langCode})`);
+        
+        // Force translations to reload without refreshing page
+        this.translateService.reloadLang(langCode).subscribe(() => {
+          console.log('Language translations reloaded');
+        });
       } catch (error) {
         console.error(`Error setting language to ${langCode}:`, error);
       }

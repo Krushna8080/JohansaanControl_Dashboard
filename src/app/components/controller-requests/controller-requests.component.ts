@@ -337,9 +337,13 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
     return this.timezoneService.formatDateTime(date, languageCode);
   }
 
-  // Helper methods to get form controls as FormControl
+  // Add getter methods for form controls
   getStatusControl(): FormControl {
     return this.filterForm.get('status') as FormControl;
+  }
+  
+  getRequestorControl(): FormControl {
+    return this.filterForm.get('requestor') as FormControl;
   }
   
   getRequestDateStartControl(): FormControl {
@@ -348,10 +352,6 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
   
   getRequestDateEndControl(): FormControl {
     return this.filterForm.get('requestDateEnd') as FormControl;
-  }
-  
-  getRequestorControl(): FormControl {
-    return this.filterForm.get('requestor') as FormControl;
   }
   
   getCompletedDateStartControl(): FormControl {
@@ -384,6 +384,19 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
     this.currentPage = 0;
     this.loadControllerRequests(true);
     // Don't close the menu - this allows users to make multiple selections
+  }
+  
+  // Check if any filters are active
+  hasActiveFilters(): boolean {
+    const formValue = this.filterForm.value;
+    return !!(
+      formValue.status || 
+      formValue.requestDateStart || 
+      formValue.requestDateEnd || 
+      formValue.requestor || 
+      formValue.completedDateStart || 
+      formValue.completedDateEnd
+    );
   }
   
   ngOnDestroy(): void {
