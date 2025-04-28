@@ -245,9 +245,9 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
                 'DISMISS',
                 { 
                   duration: 5000,
-                  panelClass: ['notification-bar'],
-                  horizontalPosition: 'center',
-                  verticalPosition: 'bottom'
+                  panelClass: ['notification-bar', 'success-notification'],
+                  horizontalPosition: 'right',
+                  verticalPosition: 'top'
                 }
               );
             },

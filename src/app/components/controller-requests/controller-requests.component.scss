@@ -482,3 +482,68 @@ td {
     width: 20px;
   }
 }
+
+// Custom notification styles
+::ng-deep .success-notification {
+  background-color: #e8f5e9 !important;
+  color: #1e5e20 !important;
+  margin-top: 60px !important;
+  margin-left: auto !important;
+  margin-right: 50px !important;
+  border-radius: 3px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+  max-width: 480px !important;
+  min-width: 380px !important;
+  width: auto !important;
+  position: relative !important;
+  right: 0 !important;
+
+  .mdc-snackbar__surface {
+    background-color: #e8f5e9 !important;
+    padding: 0 !important;
+    min-height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .mdc-snackbar__label {
+    color: #0d3b10 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 0 0 0 10px !important;
+    letter-spacing: normal !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    max-width: calc(100% - 105px) !important;
+    line-height: 36px !important;
+  }
+
+  .mdc-snackbar__label::first-letter {
+    color: #006400 !important;
+    font-weight: 900 !important;
+    font-size: 16px !important;
+    padding-right: 5px !important;
+  }
+
+  .mat-mdc-button {
+    color: #0d4912 !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    min-width: 100px !important;
+    flex-shrink: 0 !important;
+    padding: 0 12px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    margin: 0 !important;
+    border-radius: 0 3px 3px 0 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+    text-overflow: clip !important;
+    overflow: hidden !important;
+  }
+}
