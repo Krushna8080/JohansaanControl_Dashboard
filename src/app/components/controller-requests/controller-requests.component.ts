@@ -199,10 +199,11 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
   // Open the modal to add a new request
   openAddRequestModal(): void {
     const dialogRef = this.dialog.open(AddRequestModalComponent, {
-      width: '350px',
-      maxWidth: '90vw',
-      maxHeight: '90vh',
-      panelClass: 'compact-dialog'
+      width: '500px',
+      disableClose: false,
+      autoFocus: true,
+      position: { top: '50px' },
+      panelClass: ['custom-dialog-container'],
     });
 
     dialogRef.afterClosed().subscribe(result => {
