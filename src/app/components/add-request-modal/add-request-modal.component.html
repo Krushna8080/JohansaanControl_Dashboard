@@ -2,14 +2,14 @@
   <div class="dialog-header">
     <h2>Add a Request</h2>
     <button mat-icon-button class="close-button" (click)="onCancel()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 
   <mat-divider></mat-divider>
   
   <mat-dialog-content>
-    <form [formGroup]="requestForm">
+  <form [formGroup]="requestForm">
       <div class="form-field">
         <label class="field-label">Controller Name</label>
         <mat-form-field appearance="outline" class="full-width">
@@ -19,8 +19,8 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
-      
+    </div>
+    
       <div class="form-field">
         <label class="field-label">Email Address for Notification</label>
         <mat-form-field appearance="outline" class="full-width">

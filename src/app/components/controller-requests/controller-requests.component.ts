@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormBuilder, FormControl, FormsModule } from '@angular/forms';
@@ -386,7 +386,8 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
   applyFilters(): void {
     this.currentPage = 0;
     this.loadControllerRequests(true);
-    // Don't close the menu - this allows users to make multiple selections
+    // Close all menus after applying filters
+    this.closeFilterMenus();
   }
   
   // Check if any filters are active
@@ -445,5 +446,59 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
 
   getLastPageIndex(): number {
     return Math.max(0, Math.ceil(this.totalRequests / this.pageSize) - 1);
+  }
+
+  // Add a method to close other menus when one is clicked
+  closeOtherMenus(currentTrigger: MatMenuTrigger): void {
+    // Close all other open menus when clicking on a specific menu trigger
+    if (this.statusMenuTrigger && this.statusMenuTrigger !== currentTrigger && this.statusMenuTrigger.menuOpen) {
+      this.statusMenuTrigger.closeMenu();
+    }
+    if (this.requestDateMenuTrigger && this.requestDateMenuTrigger !== currentTrigger && this.requestDateMenuTrigger.menuOpen) {
+      this.requestDateMenuTrigger.closeMenu();
+    }
+    if (this.requestorMenuTrigger && this.requestorMenuTrigger !== currentTrigger && this.requestorMenuTrigger.menuOpen) {
+      this.requestorMenuTrigger.closeMenu();
+    }
+    if (this.completedDateMenuTrigger && this.completedDateMenuTrigger !== currentTrigger && this.completedDateMenuTrigger.menuOpen) {
+      this.completedDateMenuTrigger.closeMenu();
+    }
+  }
+
+  // Simplified document click handler to close menus when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    
+    // Don't process if no menus are initialized
+    if (!this.statusMenuTrigger || !this.requestDateMenuTrigger || 
+        !this.requestorMenuTrigger || !this.completedDateMenuTrigger) {
+      return;
+    }
+
+    // Don't process if no menus are open
+    const anyMenuOpen = this.statusMenuTrigger.menuOpen || 
+                        this.requestDateMenuTrigger.menuOpen || 
+                        this.requestorMenuTrigger.menuOpen || 
+                        this.completedDateMenuTrigger.menuOpen;
+    
+    if (!anyMenuOpen) {
+      return;
+    }
+    
+    // Check if click is on menu panel or a form control
+    const isMenuPanel = !!target.closest('.mat-mdc-menu-panel');
+    const isFormControl = !!target.closest('mat-form-field') || 
+                         !!target.closest('input') || 
+                         !!target.closest('mat-select') ||
+                         !!target.closest('mat-option');
+    
+    // Check if click is on a menu trigger button
+    const isMenuTrigger = !!target.closest('.filter-button');
+    
+    // If clicked outside menu, panels, and form controls, close all menus
+    if (!isMenuPanel && !isFormControl && !isMenuTrigger) {
+      this.closeFilterMenus();
+    }
   }
 }

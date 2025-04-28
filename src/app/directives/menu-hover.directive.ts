@@ -1,124 +1,116 @@
-import { Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appMenuHover]',
   standalone: true
 })
-export class MenuHoverDirective implements OnDestroy {
+export class MenuHoverDirective implements OnInit, OnDestroy {
   @Input() appMenuHover!: MatMenuTrigger;
   
-  private subscription: Subscription | null = null;
-  private menuElement: HTMLElement | null = null;
-  private closeTimer: any = null;
-  private isMouseOverMenu = false;
-  private isMouseOverTrigger = false;
-  private isListenersAttached = false;
+  private openByHover = false;
+  private enterHandler: ((e: MouseEvent) => void) | null = null;
+  private leaveHandler: ((e: MouseEvent) => void) | null = null;
   
   constructor(private elementRef: ElementRef) {}
   
-  ngOnDestroy(): void {
-    this.clearSubscription();
-    this.clearTimer();
-    this.removeListeners();
-  }
-  
-  private clearSubscription(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = null;
-    }
-  }
-  
-  private clearTimer(): void {
-    if (this.closeTimer) {
-      clearTimeout(this.closeTimer);
-      this.closeTimer = null;
-    }
-  }
-  
-  private removeListeners(): void {
-    if (this.menuElement && this.isListenersAttached) {
-      this.menuElement.removeEventListener('mouseenter', this.onMenuMouseEnter);
-      this.menuElement.removeEventListener('mouseleave', this.onMenuMouseLeave);
-      this.isListenersAttached = false;
-      this.menuElement = null;
-    }
-  }
-  
-  private onMenuMouseEnter = (): void => {
-    this.isMouseOverMenu = true;
-    this.clearTimer();
-  }
-  
-  private onMenuMouseLeave = (): void => {
-    this.isMouseOverMenu = false;
-    // Only close if neither menu nor trigger has mouse over it
-    if (!this.isMouseOverTrigger) {
-      this.scheduleClose();
-    }
-  }
-  
-  private scheduleClose(): void {
-    this.clearTimer();
-    // Use a slightly longer delay to make interaction smoother
-    this.closeTimer = setTimeout(() => {
-      if (this.appMenuHover && this.appMenuHover.menuOpen && !this.isMouseOverMenu && !this.isMouseOverTrigger) {
-        this.appMenuHover.closeMenu();
-      }
-    }, 500);
-  }
-
-  @HostListener('click')
-  onClick() {
-    // For regular click behavior, let the MatMenuTrigger handle it
-  }
-
-  @HostListener('mouseenter')
-  onMouseEnter() {
-    this.isMouseOverTrigger = true;
-    this.clearTimer();
+  ngOnInit(): void {
+    // Using direct DOM listeners avoids Angular zone issues
+    this.enterHandler = (e: MouseEvent) => this.handleMouseEnter(e);
+    this.leaveHandler = (e: MouseEvent) => this.handleMouseLeave(e);
     
-    // Only open if not already open
+    this.elementRef.nativeElement.addEventListener('mouseenter', this.enterHandler);
+    this.elementRef.nativeElement.addEventListener('mouseleave', this.leaveHandler);
+  }
+  
+  ngOnDestroy(): void {
+    if (this.enterHandler) {
+      this.elementRef.nativeElement.removeEventListener('mouseenter', this.enterHandler);
+    }
+    if (this.leaveHandler) {
+      this.elementRef.nativeElement.removeEventListener('mouseleave', this.leaveHandler);
+    }
+  }
+  
+  private handleMouseEnter(e: MouseEvent): void {
     if (!this.appMenuHover.menuOpen) {
+      this.openByHover = true;
       this.appMenuHover.openMenu();
       
-      this.clearSubscription();
-      this.subscription = this.appMenuHover.menuOpened.subscribe(() => {
-        // Find the menu panel after a small delay to ensure it's in the DOM
-        setTimeout(() => {
-          // Make sure we remove any existing listeners first
-          this.removeListeners();
+      // Once the menu is open, add listeners to it
+      setTimeout(() => {
+        const menuPanel = document.querySelector('.mat-mdc-menu-panel') as HTMLElement;
+        if (menuPanel) {
+          menuPanel.addEventListener('mouseenter', () => {
+            // Stay open while hovering menu
+            this.openByHover = true;
+          });
           
-          // Find the menu panel that belongs to this trigger
-          // We can use the panelId property of the MatMenuTrigger
-          const menuId = this.appMenuHover.menu?.panelId;
-          if (menuId) {
-            this.menuElement = document.getElementById(menuId);
-          }
-          
-          // Fallback to last panel if specific ID not found
-          if (!this.menuElement) {
-            this.menuElement = document.querySelector('.cdk-overlay-container .mat-mdc-menu-panel:last-child') as HTMLElement;
-          }
-          
-          if (this.menuElement && !this.isListenersAttached) {
-            this.menuElement.addEventListener('mouseenter', this.onMenuMouseEnter);
-            this.menuElement.addEventListener('mouseleave', this.onMenuMouseLeave);
-            this.isListenersAttached = true;
-          }
-        }, 100); // Slightly longer timeout for more reliability
-      });
+          menuPanel.addEventListener('mouseleave', () => {
+            // Close when mouse leaves menu
+            if (this.openByHover) {
+              this.appMenuHover.closeMenu();
+              this.openByHover = false;
+            }
+          });
+        }
+      }, 50);
     }
   }
-
-  @HostListener('mouseleave')
-  onMouseLeave() {
-    this.isMouseOverTrigger = false;
-    // Only close if neither menu nor trigger has mouse over it
-    if (!this.isMouseOverMenu) {
-      this.scheduleClose();
+  
+  private handleMouseLeave(e: MouseEvent): void {
+    // Get the menu element
+    const menuPanel = document.querySelector('.mat-mdc-menu-panel') as HTMLElement;
+    
+    if (!menuPanel) {
+      // If no menu, just close
+      if (this.openByHover && this.appMenuHover.menuOpen) {
+        this.appMenuHover.closeMenu();
+        this.openByHover = false;
+      }
+      return;
+    }
+    
+    // Check if we're moving toward the menu
+    const menuRect = menuPanel.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    // Simple test - are we moving in the direction of the menu?
+    const isHeadingToMenu = 
+      mouseX >= menuRect.left - 20 && 
+      mouseX <= menuRect.right + 20 && 
+      mouseY >= menuRect.top - 20 && 
+      mouseY <= menuRect.bottom + 20;
+    
+    if (!isHeadingToMenu && this.openByHover) {
+      this.appMenuHover.closeMenu();
+      this.openByHover = false;
+    }
+  }
+  
+  // Keep click support as well
+  @HostListener('click')
+  onClick() {
+    // Reset hover tracking for click-opened menus
+    this.openByHover = false;
+  }
+  
+  // Handle click closes
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (this.openByHover && this.appMenuHover.menuOpen) {
+      // Only handle hover-opened menus
+      const clickTarget = event.target as HTMLElement;
+      const triggerElement = this.elementRef.nativeElement;
+      
+      // Don't close for clicks on the trigger
+      if (triggerElement.contains(clickTarget)) {
+        return;
+      }
+      
+      this.appMenuHover.closeMenu();
+      this.openByHover = false;
     }
   }
 } 

@@ -16,10 +16,10 @@
         {{ 'CONTROLLER_REQUESTS.FILTERS.STATUS' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #statusMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
+      <mat-menu #statusMenu="matMenu" class="filter-menu" [hasBackdrop]="true" [overlapTrigger]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <mat-form-field appearance="outline" class="filter-field">
-            <mat-select [formControl]="getStatusControl()" (selectionChange)="applyFilters()">
+            <mat-select [formControl]="getStatusControl()" (selectionChange)="applyFilters(); statusMenuTrigger.closeMenu()">
               <mat-option value="">{{ 'All' }}</mat-option>
               <mat-option *ngFor="let status of statusOptions" [value]="status">
                 {{ 'CONTROLLER_REQUESTS.STATUS.' + status.toUpperCase() | translate }}
@@ -36,7 +36,7 @@
         {{ 'CONTROLLER_REQUESTS.FILTERS.REQUEST_DATE' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #requestDateMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
+      <mat-menu #requestDateMenu="matMenu" class="filter-menu" [hasBackdrop]="true" [overlapTrigger]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <div class="date-range compact-date">
             <mat-form-field appearance="outline" class="filter-field">
@@ -52,6 +52,10 @@
               <mat-datepicker-toggle matSuffix [for]="requestEndPicker"></mat-datepicker-toggle>
               <mat-datepicker #requestEndPicker (closed)="applyFilters()"></mat-datepicker>
             </mat-form-field>
+            
+            <div class="filter-actions">
+              <button mat-button (click)="requestDateMenuTrigger.closeMenu()" color="primary">Done</button>
+            </div>
           </div>
         </div>
       </mat-menu>
@@ -63,10 +67,10 @@
         {{ 'CONTROLLER_REQUESTS.FILTERS.REQUESTOR' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #requestorMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
+      <mat-menu #requestorMenu="matMenu" class="filter-menu" [hasBackdrop]="true" [overlapTrigger]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <mat-form-field appearance="outline" class="filter-field">
-            <mat-select [formControl]="getRequestorControl()" (selectionChange)="applyFilters()">
+            <mat-select [formControl]="getRequestorControl()" (selectionChange)="applyFilters(); requestorMenuTrigger.closeMenu()">
               <mat-option value="">{{ 'All' }}</mat-option>
               <mat-option *ngFor="let requestor of requestorOptions" [value]="requestor">
                 {{ requestor }}
@@ -83,7 +87,7 @@
         {{ 'CONTROLLER_REQUESTS.FILTERS.COMPLETED_DATE' | translate }}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
-      <mat-menu #completedDateMenu="matMenu" class="filter-menu" [hasBackdrop]="false">
+      <mat-menu #completedDateMenu="matMenu" class="filter-menu" [hasBackdrop]="true" [overlapTrigger]="false">
         <div class="filter-menu-content" (click)="$event.stopPropagation()">
           <div class="date-range compact-date">
             <mat-form-field appearance="outline" class="filter-field">
@@ -99,6 +103,10 @@
               <mat-datepicker-toggle matSuffix [for]="completedEndPicker"></mat-datepicker-toggle>
               <mat-datepicker #completedEndPicker (closed)="applyFilters()"></mat-datepicker>
             </mat-form-field>
+            
+            <div class="filter-actions">
+              <button mat-button (click)="completedDateMenuTrigger.closeMenu()" color="primary">Done</button>
+            </div>
           </div>
         </div>
       </mat-menu>

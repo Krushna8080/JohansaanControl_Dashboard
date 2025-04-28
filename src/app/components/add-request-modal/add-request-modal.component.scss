@@ -58,7 +58,7 @@ mat-dialog-actions {
   margin-bottom: 0;
   
   .field-label {
-    display: block;
+  display: block;
     margin-bottom: 8px;
     font-size: 1rem;
     color: rgba(0, 0, 0, 0.87);
@@ -80,7 +80,7 @@ mat-dialog-actions {
   .mat-mdc-form-field-wrapper {
     margin: 0;
     padding: 0;
-  }
+}
 
   .mat-mdc-text-field-wrapper {
     background-color: transparent;
@@ -88,7 +88,7 @@ mat-dialog-actions {
 
   .mat-mdc-form-field-outline {
     border-radius: 4px;
-  }
+}
 
   .mat-mdc-select-value {
     padding: 8px 0;
