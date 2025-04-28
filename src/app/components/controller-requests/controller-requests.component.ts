@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder, FormControl, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -30,6 +30,7 @@ import { MenuHoverDirective } from '../../directives/menu-hover.directive';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
@@ -53,6 +54,7 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
   pageSize: number = 10;
   pageSizeOptions: number[] = [5, 10, 25, 50];
   loading: boolean = false;
+  Math = Math; // Make Math available in the template
   
   // Sorting
   currentSortField: keyof ControllerRequest = 'requestDate';
@@ -403,5 +405,44 @@ export class ControllerRequestsComponent implements OnInit, OnDestroy {
     // Complete the subject to avoid memory leaks
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  // Pagination methods
+  onPageSizeChange(newSize: number): void {
+    this.pageSize = newSize;
+    this.currentPage = 0;
+    this.loadControllerRequests();
+  }
+
+  onFirstPage(): void {
+    this.currentPage = 0;
+    this.loadControllerRequests();
+  }
+
+  onPreviousPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadControllerRequests();
+    }
+  }
+
+  onNextPage(): void {
+    if (!this.isLastPage()) {
+      this.currentPage++;
+      this.loadControllerRequests();
+    }
+  }
+
+  onLastPage(): void {
+    this.currentPage = this.getLastPageIndex();
+    this.loadControllerRequests();
+  }
+
+  isLastPage(): boolean {
+    return this.currentPage >= this.getLastPageIndex();
+  }
+
+  getLastPageIndex(): number {
+    return Math.max(0, Math.ceil(this.totalRequests / this.pageSize) - 1);
   }
 }

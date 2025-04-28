@@ -7,9 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { ControllerRequestService } from '../../services/controller-request.service';
-import { TimezoneService } from '../../services/timezone.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ControllerService } from '../../services/controller.service';
+
+interface Controller {
+  name: string;
+  id: string;
+}
 
 @Component({
   selector: 'app-add-request-modal',
@@ -24,6 +30,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule,
     TranslateModule
   ],
   templateUrl: './add-request-modal.component.html',
@@ -31,46 +38,34 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class AddRequestModalComponent implements OnInit {
   requestForm: FormGroup;
-  controllers: {name: string, location: string}[] = [];
-  requestors: string[] = [];
-  currentTimezone: string = '';
+  controllers: Controller[] = [];
   
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddRequestModalComponent>,
     private controllerRequestService: ControllerRequestService,
-    private timezoneService: TimezoneService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private controllerService: ControllerService
   ) {
     this.requestForm = this.fb.group({
       controllerName: ['', Validators.required],
-      installLocation: [{value: '', disabled: true}],
-      requestor: ['', Validators.required],
-      emailNotification: ['', [Validators.email]]
+      emailNotification: ['', [Validators.required, Validators.email]]
     });
   }
   
   ngOnInit(): void {
-    // Get available controllers
-    this.controllerRequestService.getControllers().subscribe(controllers => {
-      this.controllers = controllers;
-    });
-    
-    // Get requestor options
-    this.controllerRequestService.getRequestors().subscribe(requestors => {
-      this.requestors = requestors;
-    });
-    
-    // Get current timezone
-    this.currentTimezone = this.timezoneService.getUserTimezone();
-    
-    // Listen for controller selection changes to update location
-    this.requestForm.get('controllerName')?.valueChanges.subscribe(controllerName => {
-      const controller = this.controllers.find(c => c.name === controllerName);
-      if (controller) {
-        this.requestForm.get('installLocation')?.setValue(controller.location);
+    this.loadControllers();
+  }
+
+  loadControllers(): void {
+    this.controllerService.getControllers().subscribe(
+      (data: Controller[]) => {
+        this.controllers = data;
+      },
+      (error: any) => {
+        console.error('Error loading controllers:', error);
       }
-    });
+    );
   }
 
   onCancel(): void {
@@ -79,14 +74,8 @@ export class AddRequestModalComponent implements OnInit {
 
   onSubmit(): void {
     if (this.requestForm.valid) {
-      const result = {
-        controllerName: this.requestForm.value.controllerName,
-        installLocation: this.requestForm.get('installLocation')?.value,
-        requestor: this.requestForm.value.requestor,
-        requestDate: new Date().toISOString() // This will be converted to UTC in the parent component
-      };
-      
-      this.dialogRef.close(result);
+      const formData = this.requestForm.value;
+      this.dialogRef.close(formData);
     }
   }
 }

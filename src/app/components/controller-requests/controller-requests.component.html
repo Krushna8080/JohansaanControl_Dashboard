@@ -165,15 +165,36 @@
     </table>
     
     <!-- Pagination -->
-    <mat-paginator
-      [length]="totalRequests"
-      [pageSize]="pageSize"
-      [pageSizeOptions]="pageSizeOptions"
-      [pageIndex]="currentPage"
-      (page)="onPageChange($event)"
-      showFirstLastButtons
-      aria-label="Select page of controller requests">
-    </mat-paginator>
+    <div class="custom-pagination">
+      <div class="pagination-row-selector">
+        <span class="pagination-label">Rows per page:</span>
+        <div class="pagination-select">
+          <select [ngModel]="pageSize" (ngModelChange)="onPageSizeChange($event)" class="pagination-dropdown">
+            <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+          </select>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+      </div>
+      
+      <div class="pagination-range">
+        <span>{{ (currentPage * pageSize) + 1 }}-{{ Math.min((currentPage + 1) * pageSize, totalRequests) }} of {{ totalRequests }}</span>
+      </div>
+      
+      <div class="pagination-navigation">
+        <button class="pagination-nav-btn" [disabled]="currentPage === 0" (click)="onFirstPage()">
+          <mat-icon>first_page</mat-icon>
+        </button>
+        <button class="pagination-nav-btn" [disabled]="currentPage === 0" (click)="onPreviousPage()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button class="pagination-nav-btn" [disabled]="isLastPage()" (click)="onNextPage()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        <button class="pagination-nav-btn" [disabled]="isLastPage()" (click)="onLastPage()">
+          <mat-icon>last_page</mat-icon>
+        </button>
+      </div>
+    </div>
     
     <!-- Loading indicator -->
     <div class="loading-container" *ngIf="loading">

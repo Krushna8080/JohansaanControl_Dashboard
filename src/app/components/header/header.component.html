@@ -50,10 +50,10 @@
 
 <div class="header-content">
   <div class="left-content">
-    <div class="breadcrumb">
-      <span>JCI Corporate /</span>
-    </div>
-    
+  <div class="breadcrumb">
+    <span>JCI Corporate /</span>
+  </div>
+  
     <div class="title-with-icon">
       <div class="auditor-icon">
         <mat-icon>assessment</mat-icon>
@@ -63,26 +63,26 @@
   </div>
   
   <div class="right-content">
-    <div class="location-selector">
-      {{ location }}
-      <mat-icon>arrow_drop_down</mat-icon>
-    </div>
-    
-    <div class="weather-info">
-      <ng-container *ngFor="let weather of weatherData">
-        <div class="weather-item">
-          <div class="weather-icon" *ngIf="weather.day === 'Yesterday'">
-            <mat-icon>wb_cloudy</mat-icon>
-          </div>
-          <div class="weather-icon" *ngIf="weather.day === 'Today'">
-            <mat-icon>wb_sunny</mat-icon>
-          </div>
-          <div class="weather-text">
-            <div>{{ weather.day }}</div>
-            <div>{{ weather.highTemp }} {{ weather.lowTemp }}</div>
-          </div>
+  <div class="location-selector">
+    {{ location }}
+    <mat-icon>arrow_drop_down</mat-icon>
+  </div>
+  
+  <div class="weather-info">
+    <ng-container *ngFor="let weather of weatherData">
+      <div class="weather-item">
+        <div class="weather-icon" *ngIf="weather.day === 'Yesterday'">
+          <mat-icon>wb_cloudy</mat-icon>
         </div>
-      </ng-container>
-    </div>
+        <div class="weather-icon" *ngIf="weather.day === 'Today'">
+          <mat-icon>wb_sunny</mat-icon>
+        </div>
+        <div class="weather-text">
+          <div>{{ weather.day }}</div>
+          <div>{{ weather.highTemp }} {{ weather.lowTemp }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
   </div>
 </div>

@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ControllerRequest, ControllerHealth, WeatherData } from '../models/controller.model';
 
+interface Controller {
+  id: string;
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +41,12 @@ export class ControllerService {
     }
   ];
 
+  private mockControllers: Controller[] = [
+    { id: '1', name: 'NAE45-1' },
+    { id: '2', name: 'NAE45-2' },
+    { id: '3', name: 'NAE45-3' }
+  ];
+
   private mockControllerHealth: ControllerHealth = {
     id: 'NAE45-2',
     controllerName: 'NAE45-2',
@@ -59,6 +70,10 @@ export class ControllerService {
   ];
 
   constructor() { }
+
+  getControllers(): Observable<Controller[]> {
+    return of(this.mockControllers);
+  }
 
   getControllerRequests(): Observable<ControllerRequest[]> {
     return of(this.mockRequests);
